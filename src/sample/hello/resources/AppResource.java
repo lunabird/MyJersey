@@ -241,8 +241,7 @@ public class AppResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response installPython(@QueryParam("uid") String uid,
-			@QueryParam("ip") String ip,
-			@QueryParam("installPath") String installPath
+			@QueryParam("ip") String ip
 			) {
 		Response res = null;
 		ApplicationBase a = new ApplicationBase();
@@ -250,7 +249,7 @@ public class AppResource {
 		String[] scIPAddr= new String[2];
 		try {
 			scIPAddr = dbop.getRCAddrByIP(uid, ip,"python");
-			if (a.sendSetupPythonMsg(uid, ip, scIPAddr, installPath)) {
+			if (a.sendSetupPythonMsg(uid, ip, scIPAddr)) {
 				res = Response.ok("install Python request is already executing").build();
 			} else {
 				res = Response.ok("install Python request failed").build();

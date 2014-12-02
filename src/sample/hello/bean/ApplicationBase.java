@@ -421,14 +421,13 @@ public class ApplicationBase {
 	 * @param installPath
 	 * @return
 	 */
-	public boolean sendSetupPythonMsg(String uid,String ip,String[] scIPAddr,String installPath){
+	public boolean sendSetupPythonMsg(String uid,String ip,String[] scIPAddr){
 		//发送Socket消息给Agent
 		try {
 			Socket socket = new Socket(ip, 9100);
-			String[] values = new String[3];
+			String[] values = new String[2];
 			values[0] = scIPAddr[0];
 			values[1] = scIPAddr[1];
-			values[2] = installPath;
 			Message msg = new Message(MsgType.setupPython, uid,values);
 			//加密
 			String datatemp = SerializeUtil.serialize(msg);  
