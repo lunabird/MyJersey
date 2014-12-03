@@ -297,19 +297,24 @@ public class OSBase {
 					socket.getOutputStream());
 			oos.writeObject(str);
 			//获得反馈信息
-			ObjectInputStream ois = new ObjectInputStream(
-					socket.getInputStream());
-			str = (String)ois.readObject();
-			//解密
-			String str2 = MD5Util.convertMD5(str);
-			msg = (Message)SerializeUtil.deserialize(str2); 
-			if (msg.getType().equals(MsgType.changeIP)) {
-				//此处应该返回执行结果成功或失败
-				String ret = (String)msg.getValues();
-				if(ret.equals("success")){
-					return true;
+			socket.setSoTimeout(3000);
+			try {
+				ObjectInputStream ois = new ObjectInputStream(
+						socket.getInputStream());
+				str = (String) ois.readObject();
+				// 解密
+				String str2 = MD5Util.convertMD5(str);
+				msg = (Message) SerializeUtil.deserialize(str2);
+				if (msg.getType().equals(MsgType.changeAffiIP)) {
+					// 此处应该返回执行结果失败
+					System.out.println("modify ip addr failed!");
 				}
-				System.out.println(ret);
+			} catch (SocketTimeoutException ste) {
+				// 修改数据库，将原来的ip改成changeToIP
+				System.out.println("modify ip addr success!");
+				DBOperation dbop = new DBOperation();
+				dbop.updateHostIP(ip, changeToIP);
+				return true;
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -317,6 +322,9 @@ public class OSBase {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
