@@ -48,7 +48,7 @@ public class VMScriptResource {
 			@FormDataParam("ip") String ip,
 			@FormDataParam("upload") InputStream is,
 			@FormDataParam("upload") FormDataContentDisposition formData) {
-		String fileLocation = "d:/" + formData.getFileName();
+		String fileLocation = "c:/" + formData.getFileName();
 		try {
 			File f = saveFile(is, fileLocation);
 			String result = "Successfully File Uploaded on the path "
