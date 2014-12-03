@@ -331,7 +331,7 @@ public class DBOperation {
 //		} catch (SQLException e) {
 //		e.printStackTrace();
 //		}	
-		
+//		
 		try {
 			dbop.updateHostIP("192.168.0.555", "192.168.0.122");
 		} catch (SQLException e) {

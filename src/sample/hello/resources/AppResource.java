@@ -265,8 +265,7 @@ public class AppResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response installMemcached(@QueryParam("uid") String uid,
-			@QueryParam("ip") String ip,
-			@QueryParam("installPath") String installPath
+			@QueryParam("ip") String ip
 			) {
 		Response res = null;
 		ApplicationBase a = new ApplicationBase();
@@ -274,7 +273,7 @@ public class AppResource {
 		String[] scIPAddr= new String[2];
 		try {
 			scIPAddr = dbop.getRCAddrByIP(uid, ip,"memcached");
-			if (a.sendSetupMemcachedMsg(uid, ip, scIPAddr, installPath)) {
+			if (a.sendSetupMemcachedMsg(uid, ip, scIPAddr)) {
 				res = Response.ok("install Memcached request is already executing").build();
 			} else {
 				res = Response.ok("install Memcached request failed").build();
