@@ -167,7 +167,7 @@ public class OSBaseResource {
 	@Path("/affiIPAdd")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean changeAffiIP(@QueryParam("uid") String uid,
+	public Response changeAffiIP(@QueryParam("uid") String uid,
 			@QueryParam("ip") String ip, 
 			@QueryParam("mac") String mac,
 			@QueryParam("changeToIP") String changeToIP,
@@ -177,15 +177,19 @@ public class OSBaseResource {
 			@QueryParam("affiIp") List<String> affiIP, 
 			@QueryParam("affiMask") List<String> affiMask,
 			@QueryParam("affiGateway") List<String> affiGateway){
+		Response res;
 		OSBase ob = new OSBase();
 		String[] dnsArr = (String[])dns.toArray(new String[dns.size()]);
 		String[] affiIPArr = (String[])affiIP.toArray(new String[affiIP.size()]);
 		String[] affiMaskArr = (String[])affiMask.toArray(new String[affiMask.size()]);
 		String[] affiGatewayArr = (String[])affiGateway.toArray(new String[affiGateway.size()]);
 		if(ob.sendChangeAffiIPMsg(uid, ip, mac, changeToIP, mask, gateway, dnsArr, affiIPArr, affiMaskArr, affiGatewayArr)){
-			return true;
+			res =  Response.ok("chang windows affi IP success").build();
+		} else {
+			res =  Response.ok("chang windows affi IP failed").build();
 		}
-		return false;
+		
+		return res;
 	}
 	
 	/**
@@ -201,17 +205,21 @@ public class OSBaseResource {
 	@Path("/affiIPAdd_Linux")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean changeAffiIPOnLinux(@QueryParam("uid") String uid,
+	public Response changeAffiIPOnLinux(@QueryParam("uid") String uid,
 			@QueryParam("ip") String ip, 
 			@QueryParam("deviceName") String deviceName,
 			@QueryParam("mask") String mask,
 			@QueryParam("changeToIP") String changeToIP){
+		Response res;
 		OSBase ob = new OSBase();
 		
 		if(ob.sendChangeAffiIPOnLinuxMsg(uid, ip,deviceName, mask,changeToIP)){
-			return true;
+			res =  Response.ok("chang linux affi IP success").build();
+		} else {
+			res =  Response.ok("chang linux affi IP failed").build();
 		}
-		return false;
+		
+		return res;
 	}
 	@PUT
 	@Path("/disk")

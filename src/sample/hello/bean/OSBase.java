@@ -284,7 +284,7 @@ public class OSBase {
 		//发送Socket消息给Agent
 		try {
 			Socket socket = new Socket(ip, 9000);
-			Object[] values = new Object[3];
+			String[] values = new String[3];
 			values[0]=deviceName;
 			values[1]=mask;
 			values[2]=changeToIP;
@@ -412,7 +412,7 @@ public class OSBase {
 		// 发送Socket消息给Agent
 		try {
 			Socket socket = new Socket(ip, 9000);
-			Object[] values = new Object[3];
+			String[] values = new String[3];
 			values[0] = deviceName;
 			values[1] = mask;
 			values[2] = changeToIp;
@@ -433,8 +433,7 @@ public class OSBase {
 			String str2 = MD5Util.convertMD5(str);
 			msg = (Message)SerializeUtil.deserialize(str2); 
 			if (msg.getType().equals(MsgType.changeAffiIP)) {
-				// 此处应该返回执行结果成功或失败
-				String ret = (String) msg.getValues();
+				String ret = (String)msg.getValues();
 				if (ret.equals("success")) {
 					return true;
 				}
