@@ -14,7 +14,7 @@ import java.net.Socket;
  * @author Icer
  *
  */
-public class TestClient {
+public class TestClientBufferedFile {
     
     private Socket s;
     private BufferedReader br;
@@ -22,7 +22,7 @@ public class TestClient {
     private PrintWriter pw;
     private String line = "";
     
-    public TestClient(String path) throws Exception {
+    public TestClientBufferedFile(String path) throws Exception {
         try{
             s = new Socket("127.0.0.1",11900);          
             pw = new PrintWriter(s.getOutputStream(),true);            
@@ -64,6 +64,6 @@ public class TestClient {
     
     public static void main(String[] args) throws Exception {
     	String filePath="C:\\Users\\repace\\Desktop\\test.bat";
-        new TestClient(filePath);
+        new TestClientBufferedFile(filePath);
     }
 }

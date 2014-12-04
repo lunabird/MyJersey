@@ -23,24 +23,6 @@ import com.sun.jersey.multipart.FormDataParam;
 public class VMScriptResource {
 	
 	
-	/*@PUT
-	@Path("/script")
-	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response exeScript(@QueryParam("uid") String uid,
-			@QueryParam("ip") String ip,
-			@QueryParam("script") InputStream is){
-		Response res;
-		VMScript vs = new VMScript();
-		if (vs.sendExeVmScriptMsg(uid, ip, is)) {
-			res =  Response.ok("send script success").build();
-		} else {
-			res =  Response.ok("send script failed").build();
-		}
-
-		return res;
-	}*/
-	
 	@POST
 	@Path("/upload")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)

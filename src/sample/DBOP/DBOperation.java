@@ -300,7 +300,48 @@ public class DBOperation {
 			System.out.println(rs.getString(1)+":"+rs.getString(2));
 		}
 	}
-	
+	/**@author WZY
+	 * 根据用户名的ID得到 用于的密码
+	 * @param userID 用户ID
+	 * @param hostID  主机ID
+	 * @return
+	 */
+	public  String judge(String userID) throws SQLException {
+		String result = null;
+		ResultSet rs = null;
+		Statement stmt = null;
+		stmt = con.createStatement();
+		//根据用户ID获得该用户的密码
+		System.out.println(userID+"---------");
+		String sql = "SELECT * FROM userinfo where userID = '"+userID+"'";
+		rs = stmt.executeQuery(sql);
+		while(rs.next()) {
+			System.out.println(rs.getString(1));
+			result = rs.getString("pwd");
+		}
+		
+		dbcManager.close();
+		if(rs!=null)
+		{
+			try{
+				rs.close();
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		if(stmt!=null)
+		{
+			try{
+				stmt.close();
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	public static void main(String[] args) {
 		
 		DBOperation dbop = new DBOperation();

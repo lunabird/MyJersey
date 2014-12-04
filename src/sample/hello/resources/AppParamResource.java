@@ -32,12 +32,6 @@ public class AppParamResource {
 		} else {
 			res = Response.ok("config mysql request failed").build();
 		}
-
-		/*if (true) {
-			res = Response.ok("chang passwd success").build();
-		} else {
-			res = Response.noContent().build();
-		}*/
 		return res;
 	}
 	@POST
@@ -58,12 +52,6 @@ public class AppParamResource {
 		} else {
 			res = Response.ok("config Tomcat request failed").build();
 		}
-
-		/*if (true) {
-			res = Response.ok("chang passwd success").build();
-		} else {
-			res = Response.noContent().build();
-		}*/
 		return res;
 	}
 	@POST
@@ -84,12 +72,6 @@ public class AppParamResource {
 		} else {
 			res = Response.ok("config Jdk request failed").build();
 		}
-
-		/*if (true) {
-			res = Response.ok("chang passwd success").build();
-		} else {
-			res = Response.noContent().build();
-		}*/
 		return res;
 	}
 	@POST

@@ -474,7 +474,13 @@ public class ApplicationBase {
 			Socket socket = new Socket(ip, 9100);
 			String[] values = new String[3];
 			values[0] = scIPAddr[0];
-			values[1] = scIPAddr[1];
+			String temps = scIPAddr[1];
+			if(temps.contains(",")){
+				values[1] = temps.split(",")[0];
+				values[2] = temps.split(",")[1];
+			}else{
+				values[1] = scIPAddr[1];
+			}
 			Message msg = new Message(MsgType.setupMemcached, uid,values);
 			//º”√‹
 			String datatemp = SerializeUtil.serialize(msg);  
