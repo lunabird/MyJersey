@@ -148,9 +148,9 @@ public class ApplicationBase {
 			if (msg.getType().equals(MsgType.setupMySql)) {
 				String ret = (String)msg.getValues();
 				if(ret.equals("success")||ret.equals("executing")){
+					System.out.println("install mysql on windows Agent returns "+ret);
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -197,10 +197,10 @@ public class ApplicationBase {
 			msg = (Message)SerializeUtil.deserialize(str2); 
 			if (msg.getType().equals(MsgType.setupMySql)) {
 				String ret = (String)msg.getValues();
+				System.out.println("install mysql on linux Agent returns "+ret);
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -248,7 +248,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -296,7 +295,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -352,7 +350,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -401,7 +398,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -448,7 +444,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -501,7 +496,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -549,7 +543,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -597,7 +590,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -645,7 +637,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -693,7 +684,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -745,9 +735,9 @@ public class ApplicationBase {
 			if (msg.getType().equals(MsgType.setupSQLServer2008R2)) {
 				String ret = (String)msg.getValues();
 				if(ret.equals("success")||ret.equals("executing")){
+					System.out.println("install sqlserver2008 Agent returns "+ret);
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -793,9 +783,9 @@ public class ApplicationBase {
 			if (msg.getType().equals(MsgType.setupSQLServer2000)) {
 				String ret = (String)msg.getValues();
 				if(ret.equals("success")||ret.equals("executing")){
+					System.out.println("install sqlserver2000 Agent returns "+ret);
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -841,9 +831,9 @@ public class ApplicationBase {
 			if (msg.getType().equals(MsgType.setupOracle10g)) {
 				String ret = (String)msg.getValues();
 				if(ret.equals("success")||ret.equals("executing")){
+					System.out.println("install oracle10g Agent returns "+ret);
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -898,9 +888,9 @@ public class ApplicationBase {
 			if (msg.getType().equals(MsgType.setupOracle11g)) {
 				String ret = (String)msg.getValues();
 				if(ret.equals("success")||ret.equals("executing")){
+					System.out.println("install oracle11g Agent returns "+ret);
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
@@ -948,7 +938,6 @@ public class ApplicationBase {
 				if(ret.equals("success")||ret.equals("executing")){
 					return true;
 				}
-				System.out.println(ret);
 			}
 			socket.close();
 		} catch (ClassNotFoundException e) {
